@@ -6,6 +6,7 @@ import me.spruce.game.objects.GameObject;
 import me.spruce.game.objects.ObjectHandler;
 import me.spruce.game.objects.ObjectType;
 import me.spruce.game.state.states.GameState;
+import me.spruce.game.trail.Trail;
 
 import java.awt.*;
 
@@ -19,8 +20,8 @@ public class Player extends GameObject {
         super(x, y, ObjectType.Player, loop, handler);
         this.keyListener = keyListener;
 
-        velX = 4;
-        velY = 4;
+        velX = 6;
+        velY = 6;
     }
 
     @Override
@@ -28,6 +29,8 @@ public class Player extends GameObject {
         move();
         health = clampBounds(health, 100, 0);
         collision();
+
+        handler.addObject(new Trail(x, y, 32, 32, 0.12f, Color.black, loop, handler));
     }
 
     @Override
@@ -57,6 +60,12 @@ public class Player extends GameObject {
                 case BasicEnemy:
                     if(getBounds().intersects(gameObject.getBounds())){
                         health--;
+                    }
+                    break;
+
+                case AdvancedEnemy:
+                    if(getBounds().intersects(gameObject.getBounds())){
+                        health-= 2;
                     }
                     break;
             }

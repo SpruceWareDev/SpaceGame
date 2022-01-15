@@ -1,6 +1,7 @@
 package me.spruce.game;
 
 import me.spruce.game.display.Display;
+import me.spruce.game.font.Fonts;
 import me.spruce.game.input.KeyInput;
 import me.spruce.game.objects.ObjectHandler;
 import me.spruce.game.state.StateManager;
@@ -25,6 +26,8 @@ public class Loop implements Runnable{
 
     public StateManager stateManager;
 
+    public Fonts fonts;
+
     public KeyInput keyInputManager;
 
     public Loop(String title, int width, int height) {
@@ -35,6 +38,7 @@ public class Loop implements Runnable{
 
     private void init() {
         display = new Display(title, width, height);
+        fonts = new Fonts();
         keyInputManager = new KeyInput();
         display.getFrame().addKeyListener(keyInputManager);
         stateManager =  new StateManager(this);
