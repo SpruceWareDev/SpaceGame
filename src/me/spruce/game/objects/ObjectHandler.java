@@ -2,13 +2,16 @@ package me.spruce.game.objects;
 
 import java.awt.*;
 import java.util.LinkedList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ObjectHandler {
 
-    LinkedList<GameObject> object = new LinkedList<>();
+    public LinkedList<GameObject> object = new LinkedList<GameObject>();
 
     public void tick(){
-        object.forEach(GameObject::tick);
+        for(int i = 0; i < object.size(); i++){
+            object.get(i).tick();
+        }
     }
 
     public void render(Graphics g){

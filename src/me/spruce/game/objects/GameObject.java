@@ -6,21 +6,25 @@ import java.awt.*;
 
 public abstract class GameObject {
 
+    public ObjectHandler handler;
     public Loop loop;
     protected int x,y;
     protected ObjectType type;
     protected int velX, velY;
 
-    public GameObject(int x, int y, ObjectType type, Loop loop){
+    public GameObject(int x, int y, ObjectType type, Loop loop, ObjectHandler handler){
         this.loop = loop;
         this.x = x;
         this.y = y;
         this.type = type;
+        this.handler = handler;
     }
 
     public abstract void tick();
 
     public abstract void render(Graphics g);
+
+    public abstract Rectangle getBounds();
 
     public int getX() {
         return x;
