@@ -1,6 +1,8 @@
 package me.spruce.game;
 
 import me.spruce.game.display.Display;
+import me.spruce.game.input.KeyInput;
+import me.spruce.game.objects.ObjectHandler;
 import me.spruce.game.state.StateManager;
 
 import java.awt.*;
@@ -9,7 +11,7 @@ import java.awt.image.BufferStrategy;
 public class Loop implements Runnable{
 
     private Display display;
-    private int width, height;
+    public int width, height;
     public String title;
 
     private Thread thread;
@@ -23,6 +25,8 @@ public class Loop implements Runnable{
 
     public StateManager stateManager;
 
+    public KeyInput keyInputManager;
+
     public Loop(String title, int width, int height) {
         this.width = width;
         this.height = height;
@@ -31,7 +35,9 @@ public class Loop implements Runnable{
 
     private void init() {
         display = new Display(title, width, height);
-        stateManager =  new StateManager();
+        keyInputManager = new KeyInput();
+        display.getFrame().addKeyListener(keyInputManager);
+        stateManager =  new StateManager(this);
     }
 
     @Override
@@ -61,7 +67,7 @@ public class Loop implements Runnable{
             }
 
             if(timer >= 1000000000) {
-                System.out.println("Ticks and Frames: " + ticks);
+                //System.out.println("Ticks and Frames: " + ticks);
                 finalFPS = ticks;
                 ticks = 0;
                 timer = 0;
