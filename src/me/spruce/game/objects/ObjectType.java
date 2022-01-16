@@ -4,5 +4,6 @@ public enum ObjectType {
     Player(),
     BasicEnemy(),
     AdvancedEnemy(),
+    SmartEnemy(),
     Trail();
 }

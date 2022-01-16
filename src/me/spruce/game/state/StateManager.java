@@ -2,6 +2,7 @@ package me.spruce.game.state;
 
 import me.spruce.game.Loop;
 import me.spruce.game.state.states.GameState;
+import me.spruce.game.state.states.menu.MenuState;
 
 public class StateManager {
 

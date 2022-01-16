@@ -41,7 +41,7 @@ public class Loop implements Runnable{
         fonts = new Fonts();
         keyInputManager = new KeyInput();
         display.getFrame().addKeyListener(keyInputManager);
-        stateManager =  new StateManager(this);
+        stateManager = new StateManager(this);
     }
 
     @Override

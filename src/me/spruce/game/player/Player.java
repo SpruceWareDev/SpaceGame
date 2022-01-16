@@ -58,6 +58,7 @@ public class Player extends GameObject {
         handler.object.forEach(gameObject -> {
             switch(gameObject.getType()){
                 case BasicEnemy:
+                case SmartEnemy:
                     if(getBounds().intersects(gameObject.getBounds())){
                         health--;
                     }

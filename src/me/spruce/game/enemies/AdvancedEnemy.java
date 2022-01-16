@@ -13,8 +13,8 @@ public class AdvancedEnemy extends GameObject {
     public AdvancedEnemy(int x, int y, Loop loop, ObjectHandler handler) {
         super(x, y, ObjectType.AdvancedEnemy, loop, handler);
 
-        velX = 6;
-        velY = 6;
+        velX = 4;
+        velY = 4;
     }
 
     @Override
