@@ -25,6 +25,6 @@ public class PlayerHealthbar extends HUDElement {
         g.setColor(Color.gray);
         g.fillRect(x, y, 200, 32);
         g.setColor(Color.red);
-        g.fillRect(x, y, player.health * 2, 32);
+        g.fillRect(x, y, (int) player.health * 2, 32);
     }
 }

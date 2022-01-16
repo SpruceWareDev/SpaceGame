@@ -17,7 +17,7 @@ public class Trail extends GameObject {
 
     public ObjectHandler handler;
 
-    public Trail(int x, int y, int width, int height, float life, Color color, Loop loop, ObjectHandler handler){
+    public Trail(float x, float y, int width, int height, float life, Color color, Loop loop, ObjectHandler handler){
         super(x, y, ObjectType.Trail, loop, handler);
         this.trailColor = color;
         this.width = width;
@@ -40,7 +40,7 @@ public class Trail extends GameObject {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setComposite(makeTransparent(alpha));
         g.setColor(trailColor);
-        g.fillRect(x, y, width, height);
+        g.fillRect((int) x, (int) y, width, height);
 
 
         g2d.setComposite(makeTransparent(1));
@@ -53,6 +53,6 @@ public class Trail extends GameObject {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, width, height);
+        return new Rectangle((int) x, (int) y, width, height);
     }
 }

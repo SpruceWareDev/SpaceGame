@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class AdvancedEnemy extends GameObject {
 
-    public AdvancedEnemy(int x, int y, Loop loop, ObjectHandler handler) {
+    public AdvancedEnemy(float x, float y, Loop loop, ObjectHandler handler) {
         super(x, y, ObjectType.AdvancedEnemy, loop, handler);
 
         velX = 4;
@@ -34,17 +34,17 @@ public class AdvancedEnemy extends GameObject {
             velY = 4;
         }
 
-        handler.addObject(new Trail(x, y, 32, 32, 0.1f, Color.green, loop, handler));
+        handler.addObject(new Trail((int) x, (int) y, 32, 32, 0.1f, Color.green, loop, handler));
     }
 
     @Override
     public void render(Graphics g) {
         g.setColor(Color.green);
-        g.fillRect(x, y, 32, 32);
+        g.fillRect((int) x, (int) y, 32, 32);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 32, 32);
+        return new Rectangle((int) x, (int) y, 32, 32);
     }
 }

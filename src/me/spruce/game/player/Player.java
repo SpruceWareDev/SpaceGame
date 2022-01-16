@@ -14,9 +14,9 @@ public class Player extends GameObject {
 
     public KeyInput keyListener;
 
-    public int health = 100;
+    public float health = 100;
 
-    public Player(int x, int y, KeyInput keyListener, Loop loop, ObjectHandler handler){
+    public Player(float x, float y, KeyInput keyListener, Loop loop, ObjectHandler handler){
         super(x, y, ObjectType.Player, loop, handler);
         this.keyListener = keyListener;
 
@@ -27,21 +27,21 @@ public class Player extends GameObject {
     @Override
     public void tick() {
         move();
-        health = clampBounds(health, 100, 0);
+        health = clampBounds(health, 100.0f, 0.0f);
         collision();
 
-        handler.addObject(new Trail(x, y, 32, 32, 0.12f, Color.black, loop, handler));
+        handler.addObject(new Trail((int) x, (int) y, 32, 32, 0.12f, Color.black, loop, handler));
     }
 
     @Override
     public void render(Graphics g) {
         g.setColor(Color.black);
-        g.fillRect(x, y, 32, 32);
+        g.fillRect((int) x, (int) y, 32, 32);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 32 ,32);
+        return new Rectangle((int) x, (int) y, 32 ,32);
     }
 
     public void move(){
@@ -73,7 +73,7 @@ public class Player extends GameObject {
         });
     }
 
-    public int clampBounds(int pos, int max, int min) {
+    public float clampBounds(float pos, float max, float min) {
         if(pos >= max){
             return pos = max;
         }

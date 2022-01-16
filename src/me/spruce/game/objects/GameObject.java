@@ -8,11 +8,11 @@ public abstract class GameObject {
 
     public ObjectHandler handler;
     public Loop loop;
-    protected int x,y;
+    protected float x,y;
     protected ObjectType type;
-    protected int velX, velY;
+    protected float velX, velY;
 
-    public GameObject(int x, int y, ObjectType type, Loop loop, ObjectHandler handler){
+    public GameObject(float x, float y, ObjectType type, Loop loop, ObjectHandler handler){
         this.loop = loop;
         this.x = x;
         this.y = y;
@@ -26,7 +26,7 @@ public abstract class GameObject {
 
     public abstract Rectangle getBounds();
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
@@ -34,7 +34,7 @@ public abstract class GameObject {
         this.x = x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
@@ -50,7 +50,7 @@ public abstract class GameObject {
         this.type = type;
     }
 
-    public int getVelX() {
+    public float getVelX() {
         return velX;
     }
 
@@ -58,7 +58,7 @@ public abstract class GameObject {
         this.velX = velX;
     }
 
-    public int getVelY() {
+    public float getVelY() {
         return velY;
     }
 

@@ -11,7 +11,7 @@ import java.awt.*;
 public class BasicEnemy extends GameObject {
 
 
-    public BasicEnemy(int x , int y, Loop loop, ObjectHandler handler){
+    public BasicEnemy(float x , float y, Loop loop, ObjectHandler handler){
         super(x, y, ObjectType.BasicEnemy, loop, handler);
 
         velX = 4;
@@ -35,17 +35,17 @@ public class BasicEnemy extends GameObject {
             velY = 4;
         }
 
-        handler.addObject(new Trail(x, y, 16, 16, 0.1f, Color.red, loop, handler));
+        handler.addObject(new Trail((int) x, (int) y, 16, 16, 0.1f, Color.red, loop, handler));
     }
 
     @Override
     public void render(Graphics g) {
         g.setColor(Color.red);
-        g.fillRect(x, y, 16, 16);
+        g.fillRect((int) x, (int) y, 16, 16);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 16, 16);
+        return new Rectangle((int) x, (int) y, 16, 16);
     }
 }
