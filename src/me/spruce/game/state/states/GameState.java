@@ -10,6 +10,7 @@ import me.spruce.game.level.Spawner;
 import me.spruce.game.objects.ObjectHandler;
 import me.spruce.game.player.Player;
 import me.spruce.game.state.State;
+import me.spruce.game.state.states.menu.MenuState;
 import me.spruce.game.util.MathUtils;
 
 import java.awt.*;
@@ -34,7 +35,6 @@ public class GameState extends State {
     }
 
     public void init(){
-        (elements = new CopyOnWriteArrayList<>()).clear();
         objectHandler = new ObjectHandler();
 
         // spawner
@@ -59,6 +59,10 @@ public class GameState extends State {
         hud.tick();
         levelTracker.tick();
         spawner.tick();
+
+        if (loop.keyInputManager.escPressed){
+            loop.stateManager.setCurrentState(new MenuState(loop));
+        }
     }
 
     public void render(Graphics g){

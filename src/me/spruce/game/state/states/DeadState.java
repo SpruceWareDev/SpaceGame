@@ -3,6 +3,7 @@ package me.spruce.game.state.states;
 import me.spruce.game.Loop;
 import me.spruce.game.font.FontRenderer;
 import me.spruce.game.state.State;
+import me.spruce.game.state.states.menu.MenuState;
 
 import java.awt.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -12,7 +13,6 @@ public class DeadState extends State {
     public int score, level;
     public DeadState(Loop loop, int score, int level) {
         super("DeadState", loop);
-        (elements = new CopyOnWriteArrayList<>()).clear();
         this.score = score;
         this.level = level;
     }
@@ -21,6 +21,10 @@ public class DeadState extends State {
     public void tick() {
         if(loop.keyInputManager.spacePressed){
             loop.stateManager.setCurrentState(new GameState(loop));
+        }
+
+        if (loop.keyInputManager.escPressed){
+            loop.stateManager.setCurrentState(new MenuState(loop));
         }
     }
 

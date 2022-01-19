@@ -49,7 +49,7 @@ public class Loop implements Runnable{
 
         stateManager = new StateManager(this);
 
-        mouseInputManager = new MouseInput(stateManager.getCurrentState().elements);
+        mouseInputManager = new MouseInput(this);
         display.getFrame().addMouseListener(mouseInputManager);
         display.getFrame().addMouseMotionListener(mouseInputManager);
         display.getCanvas().addMouseListener(mouseInputManager);

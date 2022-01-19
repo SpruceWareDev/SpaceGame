@@ -19,7 +19,6 @@ public class MenuState extends State {
 
     public MenuState(Loop loop){
         super("MenuState", loop);
-        (elements = new CopyOnWriteArrayList<>()).clear();
         this.loop = loop;
         startButton = new GuiButton("Start", loop.width / 2, loop.height / 3, 200, 50, Color.black, Color.white, loop.fonts.font18, () -> {
             loop.stateManager.setCurrentState(new GameState(loop));

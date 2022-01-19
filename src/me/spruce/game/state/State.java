@@ -15,6 +15,7 @@ public abstract class State {
     private String name;
 
     public State(String name, Loop loop) {
+        elements = new CopyOnWriteArrayList<>();
         this.loop = loop;
         this.name = name;
     }

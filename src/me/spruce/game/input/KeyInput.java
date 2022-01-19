@@ -11,6 +11,7 @@ public class KeyInput extends KeyAdapter {
     public boolean dPressed = false;
 
     public boolean spacePressed = false;
+    public boolean escPressed = false;
 
     public void keyPressed(KeyEvent event){
         int key = event.getKeyCode();
@@ -33,6 +34,10 @@ public class KeyInput extends KeyAdapter {
 
             case KeyEvent.VK_SPACE:
                 spacePressed = true;
+                break;
+
+            case KeyEvent.VK_ESCAPE:
+                escPressed = true;
                 break;
         }
     }
@@ -58,6 +63,10 @@ public class KeyInput extends KeyAdapter {
 
             case KeyEvent.VK_SPACE:
                 spacePressed = false;
+                break;
+
+            case KeyEvent.VK_ESCAPE:
+                escPressed = false;
                 break;
         }
     }

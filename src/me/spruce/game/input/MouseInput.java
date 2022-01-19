@@ -1,6 +1,8 @@
 package me.spruce.game.input;
 
+import me.spruce.game.Loop;
 import me.spruce.game.gui.GuiElement;
+import me.spruce.game.state.State;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -15,8 +17,8 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 
     public CopyOnWriteArrayList<GuiElement> elements;
 
-    public MouseInput(CopyOnWriteArrayList<GuiElement> elements) {
-        this.elements = elements;
+    public MouseInput(Loop loop) {
+        this.elements = loop.stateManager.getCurrentState().elements;
     }
     @Override
     public void mousePressed(MouseEvent e) {
@@ -75,5 +77,9 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
 
+    }
+
+    public void onStateChange(State newState){
+        this.elements = newState.elements;
     }
 }
