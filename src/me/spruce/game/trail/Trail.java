@@ -15,6 +15,8 @@ public class Trail extends GameObject {
     public int width, height;
     public float life;
 
+    public boolean trailsEnabled = true;
+
     public ObjectHandler handler;
 
     public Trail(float x, float y, int width, int height, float life, Color color, Loop loop, ObjectHandler handler){
@@ -24,6 +26,8 @@ public class Trail extends GameObject {
         this.height = height;
         this.life = life;
         this.handler = handler;
+
+        trailsEnabled = (Boolean) loop.settingsManager.getSettingByName("Trails").getValue();
     }
 
     @Override
@@ -37,13 +41,15 @@ public class Trail extends GameObject {
 
     @Override
     public void render(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setComposite(makeTransparent(alpha));
-        g.setColor(trailColor);
-        g.fillRect((int) x, (int) y, width, height);
+        if(trailsEnabled) {
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setComposite(makeTransparent(alpha));
+            g.setColor(trailColor);
+            g.fillRect((int) x, (int) y, width, height);
 
 
-        g2d.setComposite(makeTransparent(1));
+            g2d.setComposite(makeTransparent(1));
+        }
     }
 
     private AlphaComposite makeTransparent(float alpha){

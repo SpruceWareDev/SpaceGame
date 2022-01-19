@@ -30,7 +30,7 @@ public class GameState extends State {
     public PlayerHealthbar healthbar;
 
     public GameState(Loop loop){
-        super("GameState", loop);
+        super("Game", loop);
         init();
     }
 

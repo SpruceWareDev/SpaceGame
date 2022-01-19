@@ -6,6 +6,7 @@ import me.spruce.game.gui.GuiElement;
 import me.spruce.game.input.KeyInput;
 import me.spruce.game.input.MouseInput;
 import me.spruce.game.objects.ObjectHandler;
+import me.spruce.game.setting.SettingsManager;
 import me.spruce.game.state.StateManager;
 
 import java.awt.*;
@@ -31,6 +32,8 @@ public class Loop implements Runnable{
 
     public Fonts fonts;
 
+    public SettingsManager settingsManager;
+
     // input
     public KeyInput keyInputManager;
     public MouseInput mouseInputManager;
@@ -43,6 +46,7 @@ public class Loop implements Runnable{
 
     private void init() {
         display = new Display(title, width, height);
+        settingsManager = new SettingsManager(this);
         fonts = new Fonts();
         keyInputManager = new KeyInput();
         display.getFrame().addKeyListener(keyInputManager);

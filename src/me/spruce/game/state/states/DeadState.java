@@ -34,6 +34,7 @@ public class DeadState extends State {
         FontRenderer.drawString(g, "Total Score " + score, loop.width / 2, (loop.height / 2) - 80, true, Color.black, loop.fonts.font18);
         FontRenderer.drawString(g, "Level Reached " + level, loop.width / 2, (loop.height / 2) - 60, true, Color.black, loop.fonts.font18);
 
+        FontRenderer.drawString(g, "Press esc to go to the main menu", 10, 20, false, Color.black, loop.fonts.font22);
         FontRenderer.drawString(g, "Press space to continue", loop.width / 2, (loop.height - 100), true, Color.black, loop.fonts.font22);
     }
 }

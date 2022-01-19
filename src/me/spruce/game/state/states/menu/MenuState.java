@@ -16,14 +16,22 @@ public class MenuState extends State {
     private Loop loop;
 
     private GuiButton startButton;
+    private GuiButton optionsButton;
 
     public MenuState(Loop loop){
-        super("MenuState", loop);
+        super("Menu", loop);
         this.loop = loop;
+        // start button
         startButton = new GuiButton("Start", loop.width / 2, loop.height / 3, 200, 50, Color.black, Color.white, loop.fonts.font18, () -> {
             loop.stateManager.setCurrentState(new GameState(loop));
         });
         elements.add(startButton);
+
+        // Options button
+        optionsButton = new GuiButton("Options", loop.width / 2, loop.height / 2 - 70, 200, 50, Color.black, Color.white, loop.fonts.font18, () -> {
+            loop.stateManager.setCurrentState(new OptionsState(loop));
+        });
+        elements.add(optionsButton);
     }
 
     @Override
