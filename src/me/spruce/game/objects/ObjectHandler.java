@@ -2,7 +2,6 @@ package me.spruce.game.objects;
 
 import java.awt.*;
 import java.util.LinkedList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ObjectHandler {
 
@@ -18,6 +17,15 @@ public class ObjectHandler {
         object.forEach(object ->{
             object.render(g);
         });
+    }
+
+    public void removeAllEnemies(){
+        for(int i = 0; i < object.size(); i++){
+            if(!(object.get(i).getType().equals(ObjectType.Player))) {
+                object.remove(i);
+                i--;
+            }
+        }
     }
 
     public void addObject(GameObject o){

@@ -49,7 +49,7 @@ public class SmartEnemy extends GameObject {
             velY = 2;
         }
 
-        handler.addObject(new Trail((int) x, (int) y, 16, 16, 0.1f, Color.cyan, loop, handler));
+        handler.addObject(new Trail((int) x, (int) y, 16, 16, 0.04f, Color.cyan, loop, handler));
     }
 
     @Override

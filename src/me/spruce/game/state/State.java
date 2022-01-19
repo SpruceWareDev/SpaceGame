@@ -1,10 +1,14 @@
 package me.spruce.game.state;
 
 import me.spruce.game.Loop;
+import me.spruce.game.gui.GuiElement;
 
 import java.awt.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class State {
+
+    public CopyOnWriteArrayList<GuiElement> elements;
 
     public Loop loop;
 

@@ -2,6 +2,7 @@ package me.spruce.game.state.states;
 
 import me.spruce.game.Loop;
 import me.spruce.game.enemies.BasicEnemy;
+import me.spruce.game.gui.GuiElement;
 import me.spruce.game.hud.HUD;
 import me.spruce.game.hud.element.elements.PlayerHealthbar;
 import me.spruce.game.level.LevelTracker;
@@ -13,6 +14,7 @@ import me.spruce.game.util.MathUtils;
 
 import java.awt.*;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameState extends State {
 
@@ -32,15 +34,17 @@ public class GameState extends State {
     }
 
     public void init(){
+        (elements = new CopyOnWriteArrayList<>()).clear();
         objectHandler = new ObjectHandler();
-
-        //player
-        player = new Player(loop.width / 2 - 32, loop.height / 2 - 32, loop.keyInputManager, loop, objectHandler);
-        objectHandler.addObject(player);
 
         // spawner
         levelTracker = new LevelTracker(loop);
         spawner = new Spawner(objectHandler, levelTracker, loop);
+
+        //player
+        player = new Player(loop.width / 2 - 32, loop.height / 2 - 32, loop.keyInputManager, loop, objectHandler, levelTracker);
+        objectHandler.addObject(player);
+
 
         //HUD
         hud = new HUD();

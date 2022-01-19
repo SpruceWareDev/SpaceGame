@@ -2,12 +2,15 @@ package me.spruce.game;
 
 import me.spruce.game.display.Display;
 import me.spruce.game.font.Fonts;
+import me.spruce.game.gui.GuiElement;
 import me.spruce.game.input.KeyInput;
+import me.spruce.game.input.MouseInput;
 import me.spruce.game.objects.ObjectHandler;
 import me.spruce.game.state.StateManager;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Loop implements Runnable{
 
@@ -28,7 +31,9 @@ public class Loop implements Runnable{
 
     public Fonts fonts;
 
+    // input
     public KeyInput keyInputManager;
+    public MouseInput mouseInputManager;
 
     public Loop(String title, int width, int height) {
         this.width = width;
@@ -41,7 +46,15 @@ public class Loop implements Runnable{
         fonts = new Fonts();
         keyInputManager = new KeyInput();
         display.getFrame().addKeyListener(keyInputManager);
+
         stateManager = new StateManager(this);
+
+        mouseInputManager = new MouseInput(stateManager.getCurrentState().elements);
+        display.getFrame().addMouseListener(mouseInputManager);
+        display.getFrame().addMouseMotionListener(mouseInputManager);
+        display.getCanvas().addMouseListener(mouseInputManager);
+        display.getCanvas().addMouseMotionListener(mouseInputManager);
+
     }
 
     @Override

@@ -9,10 +9,11 @@ public class StateManager {
     private State currentState;
 
     public StateManager(Loop loop){
-        setCurrentState(new GameState(loop));
+        currentState = new MenuState(loop);
     }
 
     public void setCurrentState(State currentState) {
+        this.currentState.elements.clear();
         this.currentState = currentState;
     }
 
