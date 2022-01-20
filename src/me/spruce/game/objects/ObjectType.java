@@ -5,5 +5,6 @@ public enum ObjectType {
     BasicEnemy(),
     AdvancedEnemy(),
     SmartEnemy(),
+    Boss(),
     Trail();
 }

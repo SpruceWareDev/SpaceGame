@@ -51,7 +51,6 @@ public class GameState extends State {
 
         healthbar = new PlayerHealthbar(player, 20, 20);
         hud.addHudElement(healthbar);
-
     }
 
     public void tick(){

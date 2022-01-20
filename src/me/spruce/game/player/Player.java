@@ -83,6 +83,12 @@ public class Player extends GameObject {
                         health-= 2;
                     }
                     break;
+
+                case Boss:
+                    if(getBounds().intersects(gameObject.getBounds())){
+                        health -= 4;
+                    }
+                    break;
             }
         });
     }

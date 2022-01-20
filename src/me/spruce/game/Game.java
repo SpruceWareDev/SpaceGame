@@ -9,7 +9,7 @@ public class Game {
     public Loop gameLoop;
 
     public Game(){
-        gameLoop = new Loop("SpaceGame - " + VERSION + " | Spruce sex special edition!", 1000, 800);
+        gameLoop = new Loop("SpaceGame - " + VERSION + " | Developer special edition!", 1000, 800);
         gameLoop.start();
     }
 
