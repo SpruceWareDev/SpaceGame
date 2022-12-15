@@ -4,6 +4,7 @@ import me.spruce.game.Loop;
 import me.spruce.game.objects.GameObject;
 import me.spruce.game.objects.ObjectHandler;
 import me.spruce.game.objects.ObjectType;
+import me.spruce.game.player.Player;
 import me.spruce.game.trail.Trail;
 
 import java.awt.*;
@@ -13,7 +14,6 @@ public class SimpleBoss extends GameObject {
 
     private Loop loop;
     private ObjectHandler handler;
-
     Random random = new Random();
 
     public SimpleBoss(float x, float y, Loop loop, ObjectHandler handler) {
@@ -29,7 +29,9 @@ public class SimpleBoss extends GameObject {
     public void tick() {
         move();
 
-        handler.addObject(new Trail((int) x, (int) y, 64, 64, 0.1f, Color.gray, loop, handler));
+        handler.addObject(new Trail((int) x, (int) y, 74, 74, 0.1f, Color.gray, loop, handler));
+
+        handler.addObject(new Projectile(handler.getPlayer(), x + 10, y + 10, 6, 6, 1000, 2, loop, handler));
     }
 
     public void move(){
@@ -51,7 +53,7 @@ public class SimpleBoss extends GameObject {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.green);
+        g.setColor(Color.gray);
         g.fillRect((int) x, (int) y, 64, 64);
     }
 

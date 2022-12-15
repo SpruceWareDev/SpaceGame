@@ -1,6 +1,7 @@
 package me.spruce.game.player;
 
 import me.spruce.game.Loop;
+import me.spruce.game.enemies.boss.Projectile;
 import me.spruce.game.input.KeyInput;
 import me.spruce.game.level.LevelTracker;
 import me.spruce.game.objects.GameObject;
@@ -87,6 +88,11 @@ public class Player extends GameObject {
                 case Boss:
                     if(getBounds().intersects(gameObject.getBounds())){
                         health -= 4;
+                    }
+                    break;
+                case Projectile:
+                    if(getBounds().intersects(gameObject.getBounds())) {
+                        health -= ((Projectile)gameObject).damage;
                     }
                     break;
             }

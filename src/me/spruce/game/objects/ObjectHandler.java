@@ -1,5 +1,7 @@
 package me.spruce.game.objects;
 
+import me.spruce.game.player.Player;
+
 import java.awt.*;
 import java.util.LinkedList;
 
@@ -34,5 +36,14 @@ public class ObjectHandler {
 
     public void removeObject(GameObject o){
         object.remove(o);
+    }
+
+    public Player getPlayer(){
+        for (GameObject o : object){
+            if (o instanceof Player){
+                return (Player) o;
+            }
+        }
+        return null;
     }
 }

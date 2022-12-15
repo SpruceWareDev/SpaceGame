@@ -22,6 +22,8 @@ public class Spawner {
     Random random = new Random();
 
     private int currentEnemies = 1;
+    private boolean bossFight = false;
+    private int bossStartLevel = 0;
 
     public Spawner(ObjectHandler handler, LevelTracker tracker, Loop loop){
         this.handler = handler;
@@ -32,28 +34,26 @@ public class Spawner {
     public void tick(){
         if(currentEnemies == tracker.level){
             currentEnemies++;
-            handler.addObject(new BasicEnemy(random.nextInt(1000), random.nextInt(800), loop, handler));
-            if(tracker.level < 10) {
-                if (currentEnemies % 2 > 0 && tracker.level >= 4) {
+            if (!bossFight) {
+                handler.addObject(new BasicEnemy(random.nextInt(1000), random.nextInt(800), loop, handler));
+                if (tracker.level % 2 == 0){
                     handler.addObject(new AdvancedEnemy(random.nextInt(1000), random.nextInt(800), loop, handler));
                 }
-                if (currentEnemies % 4 > 0 && tracker.level >= 6) {
+                else if (tracker.level % 5 == 0){
                     handler.addObject(new SmartEnemy(random.nextInt(1000), random.nextInt(800), loop, handler));
                 }
             }
 
-            if (tracker.level == 10) {
+            if (tracker.level % 10 == 0) {
                 handler.removeAllEnemies();
+                bossFight = true;
+                bossStartLevel = tracker.level;
                 handler.addObject(new SimpleBoss(random.nextInt(1000), random.nextInt(800), loop, handler));
             }
 
-            if (tracker.level > 20){
-                handler.object.forEach(gameObject ->
-                {
-                    if (gameObject.getType().equals(ObjectType.Boss)){
-                        handler.removeObject(gameObject);
-                    }
-                });
+            if (tracker.level == bossStartLevel + 5 && bossFight){
+                bossFight = false;
+                handler.removeAllEnemies();
             }
         }
     }
