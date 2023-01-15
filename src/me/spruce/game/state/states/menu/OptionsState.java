@@ -13,16 +13,18 @@ public class OptionsState extends State {
 
     public OptionsState(Loop loop){
         super("Options", loop);
+        int i = 0;
         for(Setting<?> s : loop.settingsManager.settings){
             Setting<?> setting = s;
 
             if(s.getValue() instanceof Boolean){
-                GuiToggle toggle = new GuiToggle(loop.width / 2, loop.height / 3, 200, 50, (Setting<Boolean>) setting, loop, () ->{
+                GuiToggle toggle = new GuiToggle(loop.width / 2, loop.height / 3 + (i * 52), 200, 50, (Setting<Boolean>) setting, loop, () ->{
                     Setting<Boolean> Bsetting = (Setting<Boolean>) setting;
                     Bsetting.setValue(!Bsetting.getValue());
                 });
                 elements.add(toggle);
             }
+            i++;
         }
     }
 

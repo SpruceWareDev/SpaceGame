@@ -9,6 +9,9 @@ public class LevelTracker {
 
     public int score, level;
 
+    public int currentHighScore = 0;
+    public int newScore = 0;
+
     private Loop loop;
 
     public LevelTracker(Loop loop){

@@ -13,16 +13,15 @@ public class Projectile extends GameObject {
     private Player player;
     private float width, height;
     public float life;
-    private long initTime;
+    private double lifeTracker = 1f;
     public float damage = 0;
-    public Projectile(Player player, float x, float y, float width, float height, float timeMillis, float damage, Loop loop, ObjectHandler handler){
+    public Projectile(Player player, float x, float y, float width, float height, float life, float damage, Loop loop, ObjectHandler handler){
         super(x, y, ObjectType.Projectile, loop, handler);
         this.width = width;
         this.height = height;
         this.player = player;
 
-        this.life = timeMillis;
-        this.initTime = System.currentTimeMillis();
+        this.life = life;
 
         this.damage = damage;
     }
@@ -59,7 +58,9 @@ public class Projectile extends GameObject {
     }
 
     private void life(){
-        if(System.currentTimeMillis() > initTime + life){
+        if(lifeTracker > life){
+            lifeTracker -= life - 0.001f;
+        }else{
             handler.removeObject(this);
         }
 
@@ -71,7 +72,7 @@ public class Projectile extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.red);
-        g.fillRect((int) x, (int) y, 64, 64);
+        g.fillRect((int) x, (int) y, (int) width, (int) height);
     }
 
     @Override

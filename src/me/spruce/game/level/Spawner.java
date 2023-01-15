@@ -44,7 +44,7 @@ public class Spawner {
                 }
             }
 
-            if (tracker.level % 10 == 0) {
+            if (tracker.level % 10 == 0 && !bossFight) {
                 handler.removeAllEnemies();
                 bossFight = true;
                 bossStartLevel = tracker.level;

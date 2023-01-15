@@ -12,7 +12,4 @@ public class Game {
         gameLoop = new Loop("SpaceGame - " + VERSION + " | Developer special edition!", 1000, 800);
         gameLoop.start();
     }
-
-    public void addManagers(){
-    }
 }

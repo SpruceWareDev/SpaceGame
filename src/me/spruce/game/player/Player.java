@@ -36,7 +36,9 @@ public class Player extends GameObject {
     public void tick() {
         move();
         health = clampBounds(health, 100.0f, 0.0f);
-        collision();
+
+        if (!(Boolean) loop.settingsManager.getSettingByName("Invincible").getValue())
+            collision();
 
         handler.addObject(new Trail((int) x, (int) y, 32, 32, 0.12f, Color.black, loop, handler));
         if (health <= 0){
@@ -44,7 +46,8 @@ public class Player extends GameObject {
         }
 
         if (dead){
-            loop.stateManager.setCurrentState(new DeadState(loop, tracker.score, tracker.level));
+            this.tracker.newScore = this.tracker.score;
+            loop.stateManager.setCurrentState(new DeadState(loop, this.tracker, tracker.score, tracker.level));
         }
     }
 

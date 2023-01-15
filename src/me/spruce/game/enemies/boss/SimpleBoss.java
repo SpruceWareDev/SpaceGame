@@ -31,7 +31,7 @@ public class SimpleBoss extends GameObject {
 
         handler.addObject(new Trail((int) x, (int) y, 74, 74, 0.1f, Color.gray, loop, handler));
 
-        handler.addObject(new Projectile(handler.getPlayer(), x + 10, y + 10, 6, 6, 1000, 2, loop, handler));
+        handler.addObject(new Projectile(handler.getPlayer(), x + 10, y + 10, 10, 10, 0.01f, 2, loop, handler));
     }
 
     public void move(){

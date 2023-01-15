@@ -12,6 +12,7 @@ public class SettingsManager {
         settings = new CopyOnWriteArrayList<>();
 
         addSetting(new Setting<>("Trails", true));
+        addSetting(new Setting<>("Invincible", false));
     }
 
     public void addSetting(Setting<?> setting){
